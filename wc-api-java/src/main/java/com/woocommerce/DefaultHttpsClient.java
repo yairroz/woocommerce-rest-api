@@ -34,11 +34,6 @@ public class DefaultHttpsClient implements HttpsClient {
 	private HttpsURLConnection httpsConnection;
 	private ObjectMapper mapper;
 
-	public DefaultHttpsClient() throws IOException {
-		System.setProperty("javax.net.ssl.trustStore", "C:/Users/yrozenfeld/.keystore");
-		System.setProperty("javax.net.ssl.trustStorePassword", "password");
-	}
-
 	@Override
 	public Object get(URL url, EndpointBaseType endpointBaseType) throws IOException {
 		this.httpsConnection = (HttpsURLConnection)url.openConnection();
