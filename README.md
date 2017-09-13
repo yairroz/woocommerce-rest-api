@@ -12,9 +12,11 @@ will update soon
 
 ```java
     public static void main(String[] args) {
-        // Set path and password to yours trustStore (you need to make sure that you have the relevant certificate in the trusStore)
-		System.setProperty("javax.net.ssl.trustStore", "C:/Users/<user>/.keystore");
-		System.setProperty("javax.net.ssl.trustStorePassword", "put a password here");        
+        // Set path and password to yours trustStore 
+        // (you need to make sure that you have the relevant certificate in the trusStore)
+        // I suggest to use the next tool to create yours trusStore and to save on him the relevant certificate for your woocommerce
+		System.setProperty("javax.net.ssl.trustStore", "C:/Users/<user>/<.keystore>");
+		System.setProperty("javax.net.ssl.trustStorePassword", "<password>");        
         
       // Setup client
       BasicAuthConfig basicAuthConfig = new BasicAuthConfig("http://woocommerce.com", "consumerKey", "consumerSecret");
