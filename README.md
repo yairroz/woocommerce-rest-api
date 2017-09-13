@@ -12,9 +12,13 @@ will update soon
 
 ```java
     public static void main(String[] args) {
-        // Setup client
-        BasicAuthConfig basicAuthConfig = new BasicAuthConfig("http://woocommerce.com", "consumerKey", "consumerSecret");
-        WooCommerceAPI wooCommerceAPI = new WooCommerceAPI(basicAuthConfig);
+        // Set path and password to yours trustStore (you need to make sure that you have the relevant certificate in the trusStore)
+		System.setProperty("javax.net.ssl.trustStore", "C:/Users/<user>/.keystore");
+		System.setProperty("javax.net.ssl.trustStorePassword", "put a password here");        
+        
+      // Setup client
+      BasicAuthConfig basicAuthConfig = new BasicAuthConfig("http://woocommerce.com", "consumerKey", "consumerSecret");
+      WooCommerceAPI wooCommerceAPI = new WooCommerceAPI(basicAuthConfig);
 		
 		// Prepare object for request
 		HashMap<OrderParamsKeys, String> params = new HashMap<>();
