@@ -37,9 +37,20 @@ will update soon
 			System.out.println("Id: " + order.getId());
 			System.out.println("TotaL: " + order.getTotal());
 			System.out.println("status:" + order.getStatus());
+			System.out.println("DateCreated: " + order.getDateCreated());
 			System.out.println("CreatedVia: " + order.getCreatedVia());
 			System.out.println("DateCompleted: " + order.getDateCompleted());
 			System.out.println("City: " + order.getShipping().getCity());
+			System.out.println("Address1: " + order.getShipping().getAddress1());
+			System.out.println("Address2: " + order.getShipping().getAddress2());
+			System.out.println("FirstName: " + order.getShipping().getFirstName());
+			System.out.println("LastName: " + order.getShipping().getLastName());
+			System.out.println("PostCode: " + order.getShipping().getPostcode());
+			System.out.println("CustomerNote: " + order.getCustomerNote());
+			System.out.println("OrderKey: " + order.getOrderKey());
+			System.out.println("PaymentMethod: " + order.getPaymentMethod());
+			System.out.println("ShippingTotal: " + order.getShippingTotal());
+			printLineItems(order);
 			System.out.println(order.getCustomerUserAgent());
 			System.out.println();
 		}
@@ -55,5 +66,23 @@ will update soon
 		System.out.println("City: " + order.getShipping().getCity());
 		System.out.println(order.getCustomerUserAgent());
 		System.out.println();
+	}
+	
+	private static void printLineItems(WooOrder order) {
+		System.out.println("---Star print Line items---");
+		List<LineItem> lineItems = order.getLineItems();
+		int j = 1;
+		for (LineItem lineItem : lineItems) {
+			System.out.println("Line item number: " + j++ + "  ====");
+			System.out.println("Name: " + lineItem.getName());
+			System.out.println("ProductId: " + lineItem.getProductId());
+			System.out.println("Sku: " + lineItem.getSku());
+			System.out.println("Quantity: " + lineItem.getQuantity());
+			System.out.println("Price: " + lineItem.getPrice());
+			System.out.println("Subtotal: " + lineItem.getSubtotal());
+			System.out.println("Total: " + lineItem.getTotal());
+			System.out.println("VariationId: " + lineItem.getVariationId());
+		}
+		System.out.println("---Finish print Line items---");
 	}
 ```
