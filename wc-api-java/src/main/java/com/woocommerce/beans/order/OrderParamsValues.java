@@ -24,7 +24,7 @@ public enum OrderParamsValues {
 	private OrderParamsKeys relevantKey;
 	
 	
-	OrderParamsValues(String value, OrderParamsKeys relevantKey){
+	private OrderParamsValues(String value, OrderParamsKeys relevantKey){
 		this.value = value;
 		this.relevantKey = relevantKey;
 	}
