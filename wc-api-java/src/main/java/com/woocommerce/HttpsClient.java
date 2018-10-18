@@ -28,7 +28,7 @@ public interface HttpsClient {
      * @return retrieved result
      * @throws IOException when there is a problem with the http connection
      */
-    List getAll(URL url, EndpointBaseType endpointBaseType) throws IOException;
+    List<?> getAll(URL url, EndpointBaseType endpointBaseType) throws IOException;
 
     /**
      * Requests url with HTTP POST and retrieves result object as Map
@@ -38,7 +38,7 @@ public interface HttpsClient {
      * @param object request object with will be sent as json
      * @return retrieved result
      */
-    Map post(String url, Map<String, String> params, Map<String, Object> object);
+//    Map post(String url, Map<String, String> params, Map<String, Object> object);
 
     /**
      * Requests url with HTTP PUT and retrieves result object as Map
@@ -48,7 +48,7 @@ public interface HttpsClient {
      * @param object request object with will be sent as json
      * @return retrieved result
      */
-    Map put(String url, Map<String, String> params, Map<String, Object> object);
+    Object put(String url, Map<String, String> params, Object object);
 
     /**
      * Requests url with HTTP DELETE and retrieves result object as Map
@@ -57,5 +57,5 @@ public interface HttpsClient {
      * @param params request params
      * @return retrieved result
      */
-    Map delete(String url, Map<String, String> params);
+//    Map delete(String url, Map<String, String> params);
 }

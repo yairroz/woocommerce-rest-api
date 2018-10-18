@@ -36,17 +36,17 @@ public interface WooCommerce {
      * @return List of retrieved entities
      * @throws IOException when there is a problem with the http connection
      */
-    List getAll(EndpointBaseType endpointBaseType, Map params) throws IOException;
+	List<?> getAll(EndpointBaseType endpointBaseType, Map<String, String> params) throws IOException;
 
     /**
      * Updates WooCommerce entity
      *
-     * @param endpointBase API endpoint base @see EndpointBaseType
+     * @param endpointBaseType API endpoint base @see EndpointBaseType
      * @param id           id of the entity to update
      * @param object       Map with updated properties
      * @return updated WooCommerce entity
      */
-//    Map update(String endpointBase, int id, Map<String, Object> object);
+    Object update(EndpointBaseType endpointBaseType, int id, Object object);
 
     /**
      * Deletes WooCommerce entity

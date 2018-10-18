@@ -18,7 +18,8 @@ public enum OrderParamsValues {
 	COMPLETED("completed", OrderParamsKeys.STATUS), 
 	CANCELLED("cancelled", OrderParamsKeys.STATUS),
 	REFUNDED("refunded", OrderParamsKeys.STATUS),
-	FAILED("failed", OrderParamsKeys.STATUS);
+	FAILED("failed", OrderParamsKeys.STATUS),
+	SYNC_NIBIT("sync-nibit", OrderParamsKeys.STATUS);
 	
 	private String value;
 	private OrderParamsKeys relevantKey;
