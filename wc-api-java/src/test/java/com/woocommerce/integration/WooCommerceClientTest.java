@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.woocommerce.EndpointBaseType;
+import com.woocommerce.EndPointBaseType;
 import com.woocommerce.WooCommerce;
 import com.woocommerce.WooCommerceAPI;
 import com.woocommerce.auth.BasicAuthConfig;
@@ -20,10 +20,9 @@ import com.woocommerce.beans.product.WooProduct;
 
 public class WooCommerceClientTest {
 
-    private static final String WC_HTTPS_URL = "https://www.rozenfeld.co.il/";
-    private static final String CONSUMER_KEY = "ck_7169889e4eb6d6c93e5d76759e7835d0e3b3e8d1";
-    private static final String CONSUMER_SECRET = "cs_5776d8b7c066387945f296d84f159b4191e821d0";
-
+    private static final String WC_HTTPS_URL = "http://woocommerce.com";
+    private static final String CONSUMER_KEY = "consumerKey";
+    private static final String CONSUMER_SECRET = "consumerSecret";
     private WooCommerce wooCommerce;
 
     @Before
@@ -48,24 +47,24 @@ public class WooCommerceClientTest {
     @Test
     public void apiGetAllProductsTest() throws IOException {
         @SuppressWarnings("unchecked")
-		List<WooProduct> all = wooCommerce.getAll(EndpointBaseType.PRODUCTS, new HashMap<OrderParamsKeys, String>());
+		List<WooProduct> all = (List<WooProduct>) wooCommerce.getAll(EndPointBaseType.PRODUCTS, new HashMap<String, String>());
         Assert.assertNotNull(all);
     }
     
     @Ignore
     @Test
     public void apiGetAllOrders30PerPageTest() throws IOException {
-    	HashMap<OrderParamsKeys, String> params = new HashMap<>();
-		params.put(OrderParamsKeys.PER_PAGE , "30");
+    	HashMap<String, String> params = new HashMap<>();
+		params.put(OrderParamsKeys.PER_PAGE.getValue() , "30");
     	@SuppressWarnings("unchecked")
-		List<WooOrder> all = wooCommerce.getAll(EndpointBaseType.ORDERS, params);
+		List<WooOrder> all = (List<WooOrder>) wooCommerce.getAll(EndPointBaseType.ORDERS, params);
         Assert.assertNotNull(all);
     }
 
     @Ignore
     @Test
     public void apiGetProductTest() throws IOException {
-        WooProduct product = (WooProduct) wooCommerce.get(EndpointBaseType.PRODUCTS, 10);
+        WooProduct product = (WooProduct) wooCommerce.get(EndPointBaseType.PRODUCTS, 10);
         Assert.assertNotNull(product);
     }
 

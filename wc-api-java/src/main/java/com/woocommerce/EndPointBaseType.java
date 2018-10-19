@@ -9,7 +9,7 @@ import com.woocommerce.beans.shipping.WooShippingClasses;
 /**
  * Enum with basic WooCommerce endpoints
  */
-public enum EndpointBaseType {
+public enum EndPointBaseType {
 
     COUPONS("coupons", WooCoupon.class),
     CUSTOMERS("customers", WooCustomer.class),
@@ -29,7 +29,7 @@ public enum EndpointBaseType {
     private String value;
     private Class<?> clazz;
 
-    EndpointBaseType(String value, Class<?> clazz) {
+    EndPointBaseType(String value, Class<?> clazz) {
         this.value = value;
         this.clazz = clazz;
     }
