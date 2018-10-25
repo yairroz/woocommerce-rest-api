@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.woocommerce.beans.common.BillingAddress;
 import com.woocommerce.beans.common.Links;
 import com.woocommerce.beans.common.ShippingAddress;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 	"id",
 	"parent_id",
@@ -136,6 +136,15 @@ public class WooOrder {
 	private Links links;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
+	
+
+	public WooOrder() {}
+	
+	public WooOrder(Long id, String status) {
+		this.id = id;
+		this.status = status;
+	}
 
 	@JsonProperty("id")
 	public Long getId() {

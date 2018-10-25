@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.woocommerce.auth.BasicAuthConfig;
+import com.woocommerce.beans.order.WooOrderBatch;
 
 public class WooCommerceAPI implements WooCommerce {
 
@@ -47,5 +48,11 @@ public class WooCommerceAPI implements WooCommerce {
 	public Object delete(EndPointBaseType endPointType, int id) {
 		String url = String.format(API_URL_ENTITY_FORMAT, this.baseUrl, endPointType.getValue(), id);
 		return client.delete(url, endPointType);
+	}
+	
+	@Override
+	public Object batch(EndPointBaseType endPointType, WooOrderBatch wooOrderBatch) {
+		String url = String.format(API_URL_FORMAT, this.baseUrl, endPointType.getValue());
+		return client.post(url, endPointType, wooOrderBatch);
 	}
 }

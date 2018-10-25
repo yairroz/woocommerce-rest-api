@@ -3,6 +3,7 @@ package com.woocommerce;
 import com.woocommerce.beans.coupon.WooCoupon;
 import com.woocommerce.beans.customer.WooCustomer;
 import com.woocommerce.beans.order.WooOrder;
+import com.woocommerce.beans.order.WooOrderBatch;
 import com.woocommerce.beans.product.WooProduct;
 import com.woocommerce.beans.shipping.WooShippingClasses;
 
@@ -14,6 +15,7 @@ public enum EndPointBaseType {
     COUPONS("coupons", WooCoupon.class),
     CUSTOMERS("customers", WooCustomer.class),
     ORDERS("orders", WooOrder.class),
+    ORDERS_BATCH("orders/batch", WooOrderBatch.class),
     PRODUCTS("products", WooProduct.class),
     PRODUCTS_ATTRIBUTES("products/attributes", null),
     PRODUCTS_CATEGORIES("products/categories", null),
