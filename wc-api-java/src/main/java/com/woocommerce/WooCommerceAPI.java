@@ -1,6 +1,5 @@
 package com.woocommerce;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class WooCommerceAPI implements WooCommerce {
 	private HttpsClient client;
 	String baseUrl;
 
-	public WooCommerceAPI(BasicAuthConfig config) throws IOException {
+	public WooCommerceAPI(BasicAuthConfig config) {
 		this.baseUrl = config.getUrl();
 		this.client = new DefaultHttpsClient(config);
 	}
