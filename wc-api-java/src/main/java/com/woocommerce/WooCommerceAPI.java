@@ -8,8 +8,8 @@ import com.woocommerce.beans.order.WooOrderBatch;
 
 public class WooCommerceAPI implements WooCommerce {
 
-	private static final String API_URL_ENTITY_FORMAT = "%s/wp-json/wc/v1/%s/%d";
-	private static final String API_URL_FORMAT = "%s/wp-json/wc/v1/%s";
+	private static final String API_URL_ENTITY_FORMAT = "%s/wp-json/wc/v3/%s/%d";
+	private static final String API_URL_FORMAT = "%s/wp-json/wc/v3/%s";
 
 	private HttpsClient client;
 	String baseUrl;
