@@ -3,9 +3,7 @@ package com.woocommerce.beans.order;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -134,6 +132,8 @@ public class WooOrder {
 	private List<Object> refunds = null;
 	@JsonProperty("_links")
 	private Links links;
+	@JsonProperty("meta_data")
+	private List<MetadData> metaData = null;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	
@@ -516,6 +516,16 @@ public class WooOrder {
 		this.links = links;
 	}
 
+	public List<MetadData> getMetaData()
+	{
+		return metaData;
+	}
+
+	public void setMetaData(List<MetadData> metaData)
+	{
+		this.metaData = metaData;
+	}
+
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
@@ -530,5 +540,4 @@ public class WooOrder {
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
 	}
-
 }
