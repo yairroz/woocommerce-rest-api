@@ -145,6 +145,12 @@ public class WooOrder {
 		this.id = id;
 		this.status = status;
 	}
+	
+	public WooOrder(Long id, String status, List<MetadData> metaData) {
+		this.id = id;
+		this.status = status;
+		this.metaData = metaData;
+	}
 
 	@JsonProperty("id")
 	public Long getId() {
