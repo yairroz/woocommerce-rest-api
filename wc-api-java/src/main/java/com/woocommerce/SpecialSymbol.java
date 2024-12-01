@@ -11,8 +11,8 @@ public enum SpecialSymbol {
     STAR("*", "%2A"),
     TILDE("~", "%7E");
 
-    private String plain;
-    private String encoded;
+    private final String plain;
+    private final String encoded;
 
     SpecialSymbol(String plain, String encoded) {
         this.plain = plain;

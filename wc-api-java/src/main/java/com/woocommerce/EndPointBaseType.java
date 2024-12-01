@@ -28,8 +28,8 @@ public enum EndPointBaseType {
     TAXES_CLASSES("taxes/classes", null),
     WEBHOOKS("webhooks", null);
 
-    private String value;
-    private Class<?> clazz;
+    private final String value;
+    private final Class<?> clazz;
 
     EndPointBaseType(String value, Class<?> clazz) {
         this.value = value;
