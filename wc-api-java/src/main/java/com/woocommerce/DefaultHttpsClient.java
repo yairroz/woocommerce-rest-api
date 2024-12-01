@@ -1,5 +1,10 @@
 package com.woocommerce;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.woocommerce.auth.AuthParamsKey;
+import com.woocommerce.auth.BasicAuthConfig;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -7,7 +12,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -23,23 +27,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.woocommerce.auth.AuthParamsKey;
-import com.woocommerce.auth.BasicAuthConfig;
-
 public class DefaultHttpsClient implements HttpsClient {
 
-	private BasicAuthConfig config;
+	private final BasicAuthConfig config;
 	
 	public DefaultHttpsClient(BasicAuthConfig config) {
 		this.config = config;
 	}
 
-	private ObjectMapper mapper = new ObjectMapper();
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Override
 	public Object get(String url, EndPointBaseType endPointBaseType) {
@@ -81,7 +77,7 @@ public class DefaultHttpsClient implements HttpsClient {
 		httpRequest.setHeader("Content-Type", "application/json");
 		try (CloseableHttpClient client = HttpClientBuilder.create().build();
 				CloseableHttpResponse response = client.execute(httpRequest);
-				InputStream inputStream = response.getEntity().getContent();) {
+				InputStream inputStream = response.getEntity().getContent()) {
 			return parseResponse(endPointBaseType, isList, inputStream);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -90,7 +86,7 @@ public class DefaultHttpsClient implements HttpsClient {
 	
 	@SuppressWarnings("unchecked")
 	private <T> T parseResponse(EndPointBaseType endpointBaseType, boolean isList, InputStream inputStream) 
-			throws IOException, JsonParseException, JsonMappingException {
+			throws IOException {
 		if (isList){
 			JavaType type = mapper.getTypeFactory().constructParametricType(List.class, endpointBaseType.getClazz());
 			return mapper.readValue(inputStream, type);
@@ -121,7 +117,7 @@ public class DefaultHttpsClient implements HttpsClient {
 
 	private List<NameValuePair> getParametersAsList(Map<String, String> params) {
 		List<NameValuePair> postParameters = new ArrayList<>();
-		if (params != null && params.size() > 0) 
+		if (params != null && !params.isEmpty())
 			for (String key : params.keySet())
 				postParameters.add(new BasicNameValuePair(key, params.get(key)));
 		return postParameters;

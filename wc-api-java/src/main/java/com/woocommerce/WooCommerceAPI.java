@@ -1,17 +1,16 @@
 package com.woocommerce;
 
-import java.util.List;
-import java.util.Map;
-
 import com.woocommerce.auth.BasicAuthConfig;
 import com.woocommerce.beans.order.WooOrderBatch;
+import java.util.List;
+import java.util.Map;
 
 public class WooCommerceAPI implements WooCommerce {
 
 	private static final String API_URL_ENTITY_FORMAT = "%s/wp-json/wc/v3/%s/%d";
 	private static final String API_URL_FORMAT = "%s/wp-json/wc/v3/%s";
 
-	private HttpsClient client;
+	private final HttpsClient client;
 	String baseUrl;
 
 	public WooCommerceAPI(BasicAuthConfig config) {

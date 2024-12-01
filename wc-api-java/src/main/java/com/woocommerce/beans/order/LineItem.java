@@ -40,7 +40,7 @@ public class LineItem {
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("sku")
-	private long sku;
+	private String sku;
 	@JsonProperty("product_id")
 	private Long productId;
 	@JsonProperty("variation_id")
@@ -64,7 +64,7 @@ public class LineItem {
 	@JsonProperty("meta")
 	private List<Object> meta = null;
 	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<>();
 
 	@JsonProperty("id")
 	public Long getId() {
@@ -87,12 +87,12 @@ public class LineItem {
 	}
 
 	@JsonProperty("sku")
-	public long getSku() {
+	public String getSku() {
 		return sku;
 	}
 
 	@JsonProperty("sku")
-	public void setSku(long sku) {
+	public void setSku(String sku) {
 		this.sku = sku;
 	}
 

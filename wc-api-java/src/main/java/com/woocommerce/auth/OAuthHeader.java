@@ -11,7 +11,7 @@ public enum OAuthHeader {
     OAUTH_SIGNATURE_METHOD("oauth_signature_method"),
     OAUTH_SIGNATURE("oauth_signature");
 
-    private String value;
+    private final String value;
 
     OAuthHeader(String value) {
         this.value = value;

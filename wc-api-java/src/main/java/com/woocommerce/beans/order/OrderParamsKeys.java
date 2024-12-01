@@ -2,8 +2,8 @@ package com.woocommerce.beans.order;
 
 /**
  * Enum of woocommerce orders params query.
- * according to woocommercer Rest API documentation.
- * URL: <a>http://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders</a>
+ * according to WooCommerce Rest API documentation.
+ * URL: <a><a href="http://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders">...</a></a>
  */
 public enum OrderParamsKeys {
 
@@ -121,9 +121,9 @@ public enum OrderParamsKeys {
 	DP("dp");
 	
 	
-	private String value;
+	private final String value;
 	
-	private OrderParamsKeys(String value) {
+	OrderParamsKeys(String value) {
 		this.value = value;
 	}
 
